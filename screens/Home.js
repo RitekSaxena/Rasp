@@ -11,8 +11,22 @@ import HamBurger from "../assets/Hamburger.png";
 import Location from "../assets/Location.png";
 import UserIcon from '../assets/UserIcon.png';
 import homeIcon from '../assets/homeIcon.png'
+import { useNavigation } from '@react-navigation/core';
+
 
 const Home = () => {
+
+  const navigation = useNavigation();
+
+
+  const [user, setUser] = useState({
+    firstname : "Ritek",
+    lastname:" Saxena",
+    dob : "01-01-2003",
+    contact : "+91-7668003886",
+    address:"Budaun, U.P. 243601, India",
+    currentDevice : "Galaxy's A22"
+  })
   const [locationInput, setLocationInput] = useState("");
   const [location, setLocation] = useState("Dwarka sec-8, Delhi NCR")
 
@@ -34,9 +48,11 @@ const Home = () => {
       <Text
         style={[
           styles.headingText,
-          { position: "absolute", top: "15%", color: "#5c5c5c", fontSize: 18 },
+          { position: "absolute", top: "15%", color: "#5c5c5c", fontSize: 18 ,textAlign:"center"},
         ]}
       >
+        Hi {user.firstname}
+        {'\n'+'\n'}
         Find your desired Doctor right now!
       </Text>
 
@@ -54,7 +70,7 @@ const Home = () => {
 
         <TouchableOpacity style={[styles.homeTab,{backgroundColor:"#6ba5cf"}]}><Text style={[styles.tabText]}>Book an {'\n'}appointment</Text></TouchableOpacity>
 
-        <TouchableOpacity style={[styles.homeTab,{backgroundColor:"#6ba5cf"}]}><Text style={[styles.tabText]}>Articles </Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.navigate("Articles")} style={[styles.homeTab,{backgroundColor:"#6ba5cf"}]}><Text style={[styles.tabText]}>Articles </Text></TouchableOpacity>
 
         <TouchableOpacity style={styles.homeTab}><Text style={[styles.tabText]}>Hospital nearby</Text></TouchableOpacity>
       </View>
@@ -126,7 +142,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000000",
     position: "absolute",
-    top: "20%",
+    top: "25%",
     shadowColor: "#000000",
     paddingLeft: 20,
     shadowOpacity: 0,
@@ -160,9 +176,7 @@ const styles = StyleSheet.create({
     top: "36%",
     height: "50%",
     width: "96%",
-    // borderWidth: 2,
-    // // borderColor: "cyan",
-    // // borderRadius: 15,
+  
     display:"flex",
     flexDirection:"row",
     flexWrap:"wrap",

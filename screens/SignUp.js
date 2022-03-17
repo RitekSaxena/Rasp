@@ -11,13 +11,11 @@ const SignUp = () => {
     const navigation = useNavigation();
 
     const handleGoogleSignUp = ()=>{
-        navigation.navigate("Home")
+     navigation.navigate("Home")   
     }
     const handlePhoneSignUp = ()=>{
         navigation.navigate("Home")
-        
     }
-
   return (
     <View style={styles.App}>
       
@@ -37,7 +35,7 @@ const SignUp = () => {
 
       <TouchableOpacity style={styles.signUpButton} onPress={handlePhoneSignUp}>
         <Text style={styles.headingText}>
-          Signup with phone 
+          Signup with phone  
         </Text>
         <Image
         style= {styles.loginLogos}
