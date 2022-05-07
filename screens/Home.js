@@ -64,8 +64,8 @@ const Home = () => {
       />
 
       <View style={styles.homeMain}>
-        
-        <TouchableOpacity style={styles.homeTab}><Text style={[styles.tabText]}>Consult a doctor online </Text>
+
+        <TouchableOpacity onPress={()=> navigation.navigate("ConsultOnline")} style={styles.homeTab}><Text style={[styles.tabText]}>Consult a doctor online </Text>
 </TouchableOpacity>
 
         <TouchableOpacity style={[styles.homeTab,{backgroundColor:"#6ba5cf"}]}><Text style={[styles.tabText]}>Book an {'\n'}appointment</Text></TouchableOpacity>

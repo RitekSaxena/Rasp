@@ -1,17 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/core';
 import { StyleSheet, Text, View, Image,TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import GoogleIcon from '../assets/Google.png';
 import CallIcon from '../assets/Phone.png'
 import UserIcon from '../assets/UserIcon.png'
+import {OAuth2Client} from 'google-auth-library'
+import GoogleLogin from 'react-google-login'
 
 const SignUp = () => {
 
+
+
     const navigation = useNavigation();
 
-    const handleGoogleSignUp = ()=>{
-     navigation.navigate("Home")   
+    const responseGoogle = response => {
+      
+      
+      console.log(googleuser);
+
+    };
+
+    const handleGoogleSignUp = res=>{
+    
+      navigation.navigate("UserDetails", {res}) 
+  
+      
+      
+      
     }
     const handlePhoneSignUp = ()=>{
         navigation.navigate("Home")
@@ -22,6 +38,13 @@ const SignUp = () => {
      <View style={styles.container}> 
 
      <Image source={UserIcon} style={{marginBottom:20}} />
+     <GoogleLogin
+  clientId="1031278773289-3vo7b3ukk98lnihlugnu51s59didb5nh.apps.googleusercontent.com"
+  buttonText="Login with Google"
+  onSuccess={handleGoogleSignUp}
+  onFailure={responseGoogle}
+  cookiePolicy="single_host_origin"
+/>
       <TouchableOpacity style={styles.signUpButton} onPress={handleGoogleSignUp} >
         <Text style={styles.headingText}>
           Signup with google
@@ -33,15 +56,6 @@ const SignUp = () => {
         
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.signUpButton} onPress={handlePhoneSignUp}>
-        <Text style={styles.headingText}>
-          Signup with phone  
-        </Text>
-        <Image
-        style= {styles.loginLogos}
-          source={CallIcon}
-        />
-      </TouchableOpacity>
       <TouchableOpacity>
       <Text style={styles.smallText}>
         Already a user ? Login.
