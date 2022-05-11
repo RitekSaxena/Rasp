@@ -13,15 +13,15 @@ const TopicWise = ({ route }) => {
   const [articles, setArticles] = useState([
     {
       title: "Article-1",
-      author: "Maharaj",
+      author: "Dr. Ayushi",
     },
     {
       title: "Article-2" ,
-      author: "Senapati",
+      author: "Dr. Shruti",
     },
     {
       title: "Article-3",
-      author: "Sipahi",
+      author: "Dr. Aishwarya",
     },
   ]);
 

@@ -17,7 +17,7 @@ const UserDetails = ({route}) => {
   const [city, setstate4] = useState("")
   const [state, setstate5] = useState("")
   const email = route.params.res.Lu.Bv
-  const model = 0;
+  const model = 1;
   const gps = location
 
   useEffect(()=>{
@@ -70,7 +70,7 @@ const UserDetails = ({route}) => {
     .then(res=>{
       console.log(res)
     })
-    navigation.navigate("Home")
+    navigation.navigate("Home",{email})
   }
 
 
@@ -90,11 +90,11 @@ const UserDetails = ({route}) => {
         ]} >Please provide the required details for signing Up </Text>
     <Stack space={4} w="85%" maxW="400px">
   
-      <Input onChangeText={(e)=>setstate1(e)} value={firstname}  variant="outline" placeholder="state1" />
-      <Input onChangeText={(e)=>setstate2(e)} value={lastname}  variant="outline" placeholder="state2" />
-      <Input onChangeText={(e)=>setstate3(e)} value={contact}  variant="outline" placeholder="state3" />
-      <Input onChangeText={(e)=>setstate4(e)} value={city}  variant="outline" placeholder="state4" />
-      <Input onChangeText={(e)=>setstate5(e)} value={state}  variant="outline" placeholder="state5" />
+      <Input onChangeText={(e)=>setstate1(e)} value={firstname}  variant="outline" placeholder="FirstName" />
+      <Input onChangeText={(e)=>setstate2(e)} value={lastname}  variant="outline" placeholder="LastName" />
+      <Input onChangeText={(e)=>setstate3(e)} value={contact}  variant="outline" placeholder="Contact" />
+      <Input onChangeText={(e)=>setstate4(e)} value={city}  variant="outline" placeholder="City" />
+      <Input onChangeText={(e)=>setstate5(e)} value={state}  variant="outline" placeholder="State" />
 
       <Button onPress={submitUserInfo} colorScheme="lightBlue">
   Submit

@@ -12,13 +12,15 @@ import homeIcon from '../assets/homeIcon.png'
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 
-const Articles = () => {
+
+const Articles = ({route}) => {
 
     const [topicInput, setTopicInput]= useState("")
     const [topics, setTopics] = useState([
       "Skin Care","Women Health", "Eye Care","Dental Care","Recent News","Recent Development"
     ])
     const navigation = useNavigation();
+    const userEmail = route.params.userEmail
   return (
     <View style={styles.App}>
      
@@ -52,7 +54,7 @@ const Articles = () => {
 
 
       <View style={styles.bottomNav}>
-          <TouchableOpacity onPress={()=>navigation.navigate('Home')}>
+          <TouchableOpacity onPress={()=>navigation.navigate('Home', {userEmail})}>
         <Image
           style={{width:40,height:40,}}
             source={homeIcon}

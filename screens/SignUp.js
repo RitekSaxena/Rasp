@@ -45,16 +45,7 @@ const SignUp = () => {
   onFailure={responseGoogle}
   cookiePolicy="single_host_origin"
 />
-      <TouchableOpacity style={styles.signUpButton} onPress={handleGoogleSignUp} >
-        <Text style={styles.headingText}>
-          Signup with google
-        </Text>
-        <Image
-        style= {styles.loginLogos}
-          source={GoogleIcon}
-        />
-        
-      </TouchableOpacity>
+      
 
       <TouchableOpacity>
       <Text style={styles.smallText}>

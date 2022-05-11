@@ -14,7 +14,7 @@ import homeIcon from '../assets/homeIcon.png'
 import { useNavigation } from '@react-navigation/core';
 
 
-const Home = () => {
+const Home = ({route}) => {
 
   const navigation = useNavigation();
 
@@ -28,7 +28,9 @@ const Home = () => {
     currentDevice : "Galaxy's A22"
   })
   const [locationInput, setLocationInput] = useState("");
-  const [location, setLocation] = useState("Dwarka sec-8, Delhi NCR")
+  const [location, setLocation] = useState("IIT Ropar, Main Campus")
+  const userEmail = route.params.email? route.params.email : route.params.userEmail
+
 
   return (
     <View style={styles.App}>
@@ -65,14 +67,14 @@ const Home = () => {
 
       <View style={styles.homeMain}>
 
-        <TouchableOpacity onPress={()=> navigation.navigate("ConsultOnline")} style={styles.homeTab}><Text style={[styles.tabText]}>Consult a doctor online </Text>
+        <TouchableOpacity onPress={()=> navigation.navigate("ConsultOnline",{userEmail})} style={styles.homeTab}><Text style={[styles.tabText]}>Consult a doctor online </Text>
 </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.homeTab,{backgroundColor:"#6ba5cf"}]}><Text style={[styles.tabText]}>Book an {'\n'}appointment</Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.navigate("ConsultOnline",{userEmail})}  style={[styles.homeTab,{backgroundColor:"#6ba5cf"}]}><Text style={[styles.tabText]}>Book an {'\n'}appointment</Text></TouchableOpacity>
 
-        <TouchableOpacity onPress={()=> navigation.navigate("Articles")} style={[styles.homeTab,{backgroundColor:"#6ba5cf"}]}><Text style={[styles.tabText]}>Articles </Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.navigate("Articles", {userEmail})} style={[styles.homeTab,{backgroundColor:"#6ba5cf"}]}><Text style={[styles.tabText]}>Articles </Text></TouchableOpacity>
 
-        <TouchableOpacity style={styles.homeTab}><Text style={[styles.tabText]}>Hospital nearby</Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.navigate("Maps", {userEmail})} style={styles.homeTab}><Text style={[styles.tabText]}>Hospital nearby</Text></TouchableOpacity>
       </View>
 
       <View style={styles.bottomNav}>
@@ -99,12 +101,12 @@ const Home = () => {
 
         </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.navigate("Profile",{userEmail})}>
         <Image
           style={{width:40,height:40}}
           source={UserIcon}
         />
-        </TouchableOpacity>
+        </TouchableOpacity >
       </View>
     </View>
   );
